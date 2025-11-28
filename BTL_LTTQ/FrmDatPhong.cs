@@ -273,10 +273,8 @@ namespace GUI
             cboMaKH.SelectedValue = datPhong.MaKH;
             cboMaNV.SelectedValue = datPhong.MaNV;
 
-            // 🔥 Giải pháp hiệu quả: Thử set value trước, nếu không có thì set text
             cboMaPhong.SelectedValue = datPhong.MaPhong;
 
-            // Nếu phòng không có trong danh sách (đã đặt), hiển thị text
             if (cboMaPhong.SelectedValue == null ||
                 (int)cboMaPhong.SelectedValue != datPhong.MaPhong)
             {

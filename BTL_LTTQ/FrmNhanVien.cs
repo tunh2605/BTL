@@ -197,6 +197,15 @@ namespace GUI
                 return;
             }
 
+            int tuoi = DateTime.Now.Year - dtpNgaySinh.Value.Year;
+            if (dtpNgaySinh.Value > DateTime.Now.AddYears(-tuoi)) tuoi--;
+            if (tuoi < 18)
+            {
+                CustomMessageBox.ShowWarning("Nhân viên phải từ 18 tuổi trở lên.", "Thông báo");
+                dtpNgaySinh.Focus();
+                return;
+            }
+
             try
             {
                 var nv = new NhanVienDTO
