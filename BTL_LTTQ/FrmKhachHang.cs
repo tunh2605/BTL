@@ -49,6 +49,8 @@ namespace GUI
             {
                 maKH = bll.LayMaKHTiepTheo();
             }
+
+
             else if (!int.TryParse(txtMaKH.Text, out maKH))
             {
                 CustomMessageBox.Show("Vui lòng nhập Mã KH là số nguyên!");
@@ -62,6 +64,42 @@ namespace GUI
                 txtTenKH.Focus();
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(txtSDT.Text))
+            {
+                CustomMessageBox.Show("Vui lòng nhập sdt khách hàng !");
+                txtSDT.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtTenKH.Text))
+            {
+                CustomMessageBox.Show("Vui lòng nhập tên khách hàng!");
+                txtTenKH.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCMND.Text))
+            {
+                CustomMessageBox.Show("Vui lòng nhập CMND/CCCD của khách hàng!");
+                txtCMND.Focus();
+                return;
+            }
+
+            if (!txtCMND.Text.All(char.IsDigit))
+            {
+                CustomMessageBox.Show("CMND/CCCD chỉ được chứa chữ số!");
+                txtCMND.Focus();
+                return;
+            }
+
+            if (txtCMND.Text.Length != 9 && txtCMND.Text.Length != 12)
+            {
+                CustomMessageBox.Show("CMND phải gồm 9 số hoặc CCCD phải gồm 12 số!");
+                txtCMND.Focus();
+                return;
+            }
+
 
             if (txtTenKH.Text.Any(char.IsDigit))
             {
@@ -81,6 +119,8 @@ namespace GUI
                     return;
                 }
             }
+
+
 
             if (bll.ThemKhachHang(maKH, txtTenKH.Text.Trim(), cboGioiTinh.Text, txtSDT.Text.Trim(), txtCMND.Text.Trim()))
             {
@@ -103,6 +143,14 @@ namespace GUI
                 return;
             }
 
+
+            if (string.IsNullOrWhiteSpace(txtSDT.Text))
+            {
+                CustomMessageBox.Show("Vui lòng nhập sdt khách hàng !");
+                txtSDT.Focus();
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtTenKH.Text))
             {
                 CustomMessageBox.Show("Vui lòng nhập tên khách hàng!");
@@ -110,7 +158,29 @@ namespace GUI
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtTenKH.Text) || txtTenKH.Text.Any(char.IsDigit))
+            if (string.IsNullOrWhiteSpace(txtCMND.Text))
+            {
+                CustomMessageBox.Show("Vui lòng nhập CMND/CCCD của khách hàng!");
+                txtCMND.Focus();
+                return;
+            }
+
+            if (!txtCMND.Text.All(char.IsDigit))
+            {
+                CustomMessageBox.Show("CMND/CCCD chỉ được chứa chữ số!");
+                txtCMND.Focus();
+                return;
+            }
+
+            if (txtCMND.Text.Length != 9 && txtCMND.Text.Length != 12)
+            {
+                CustomMessageBox.Show("CMND phải gồm 9 số hoặc CCCD phải gồm 12 số!");
+                txtCMND.Focus();
+                return;
+            }
+
+
+            if (txtTenKH.Text.Any(char.IsDigit))
             {
                 CustomMessageBox.Show("Tên khách hàng không được chứa số!");
                 txtTenKH.Focus();
@@ -120,6 +190,7 @@ namespace GUI
             if (!string.IsNullOrWhiteSpace(txtSDT.Text))
             {
                 string sdt = txtSDT.Text.Trim();
+
                 if (sdt.Length != 11 || !sdt.All(char.IsDigit) || sdt[0] != '0')
                 {
                     CustomMessageBox.Show("Số điện thoại phải gồm 11 chữ số, bắt đầu bằng số 0 và không chứa chữ cái!");

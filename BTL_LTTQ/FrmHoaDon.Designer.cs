@@ -142,6 +142,7 @@
             this.txtMaDatPhong.Name = "txtMaDatPhong";
             this.txtMaDatPhong.Size = new System.Drawing.Size(377, 41);
             this.txtMaDatPhong.TabIndex = 3;
+            this.txtMaDatPhong.ReadOnly = true;
             // 
             // lblNgayLap
             // 
